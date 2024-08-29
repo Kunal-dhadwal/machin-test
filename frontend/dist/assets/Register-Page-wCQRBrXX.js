@@ -1,0 +1,1 @@
+import{j as e}from"./index-CFHMJ-zO.js";import{A as r}from"./Auth-B41HuQT0.js";const i=()=>e.jsxs("div",{children:[e.jsx("h1",{children:"Register"}),e.jsx(r,{type:"register"})]});export{i as default};
