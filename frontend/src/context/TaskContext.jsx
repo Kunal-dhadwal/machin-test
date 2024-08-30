@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const TaskContext = createContext();
 
 const TaskProvider = ({ children }) => {
@@ -8,7 +8,7 @@ const TaskProvider = ({ children }) => {
 
   const getTasks = async () => {
     const token = localStorage.getItem('authToken');
-    const res = await axios.get('/api/tasks', {
+    const res = await axios.get(apiUrl+'/api/tasks', {
       headers: {
         'x-auth-token': token,
       }
@@ -18,7 +18,7 @@ const TaskProvider = ({ children }) => {
 
   const addTask = async (taskData) => {
     const token = localStorage.getItem('authToken');
-    const res = await axios.post('/api/tasks', taskData, {
+    const res = await axios.post(apiUrl+'/api/tasks', taskData, {
       headers: {
         'x-auth-token': token,
       }
@@ -28,7 +28,7 @@ const TaskProvider = ({ children }) => {
 
   const updateTask = async (taskId, taskData) => {
     const token = localStorage.getItem('authToken');
-    const res = await axios.put(`/api/tasks/${taskId}`, taskData, {
+    const res = await axios.put(apiUrl+`/api/tasks/${taskId}`, taskData, {
       headers: {
         'x-auth-token': token,
       }
@@ -38,7 +38,7 @@ const TaskProvider = ({ children }) => {
 
   const deleteTask = async (taskId) => {
     const token = localStorage.getItem('authToken');
-    await axios.delete(`/api/tasks/${taskId}`, {
+    await axios.delete(apiUrl+`/api/tasks/${taskId}`, {
       headers: {
         'x-auth-token': token,
       }
