@@ -9,7 +9,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: 'https://machin-test-ilpm-frontend.vercel.app', // Allow only this origin
+    methods: 'GET,POST,PUT,DELETE,PATCH', // Allow only specific methods
+    allowedHeaders: 'Content-Type,Authorization', // Allow specific headers
+}));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
